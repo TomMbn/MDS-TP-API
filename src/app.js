@@ -6,6 +6,8 @@ import path from "node:path";
 import homeRouter from './routes/homeRoutes.js'
 import aboutRouter from './routes/aboutRoutes.js';
 import tchatRouter from './routes/tchatRoutes.js';
+import authRoutes from './routes/authRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import { fileURLToPath } from "node:url";
 import { Server } from "socket.io";
 
@@ -32,13 +34,14 @@ connectDB()
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use(express.json());
+
 app.use(homeRouter);
 app.use(aboutRouter);
 app.use(tchatRouter);
+app.use('/auth', authRoutes);
+app.use('/users', userRoutes);
 
-app.use(function(req, res) {
-    res.render('404');
-});
 
 function DAB(amount) {
     let remaining = Math.round(amount * 100);
