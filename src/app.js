@@ -13,6 +13,10 @@ import { fileURLToPath } from "node:url";
 import { Server } from "socket.io";
 import initSocket from "./sockets/tchatSocket.js";
 
+// Swagger
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+
 const app = express();
 const port = 8080;
 
@@ -33,6 +37,45 @@ const connectDB = async () => {
 
 connectDB();
 
+// Swagger JSDoc configuration
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',  // Version de l'OpenAPI
+    info: {
+      title: 'API Utilisateurs',
+      version: '1.0.0',
+      description: 'API pour gérer les utilisateurs et l\'authentification',
+    },
+    servers: [
+      {
+        url: 'http://localhost:8080',  // URL de votre serveur
+      },
+    ],
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',  // Indique que le token sera en JWT
+        },
+      },
+    },
+    security: [
+      {
+        BearerAuth: [],  // Applique cette sécurité à toutes les routes qui la nécessitent
+      },
+    ],
+  },
+  apis: ['./routes/*.js'],  // Spécifiez les fichiers contenant les annotations Swagger
+};
+
+
+// Générer la documentation Swagger
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+
+// Serveur la documentation Swagger à l'endpoint /api-docs
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -50,6 +93,7 @@ initSocket(io);
 
 server.listen(port, () => {
   console.log(`app listening on port ${port}`);
+  console.log(`Swagger UI est accessible sur http://localhost:${port}/api-docs`);
 });
 
 export default app;
