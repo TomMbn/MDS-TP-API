@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/database.js';
+import Product from './products.js';
 
 const User = sequelize.define('User', {
   id_user: {
@@ -43,5 +44,7 @@ const User = sequelize.define('User', {
   schema: 'Utilisateur',
   timestamps: false
 });
+
+User.hasMany(Product, { foreignKey: 'id_fournisseur', as: 'produits' });
 
 export default User;
