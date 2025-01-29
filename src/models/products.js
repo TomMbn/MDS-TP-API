@@ -1,46 +1,50 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/database";
-import User from "./user";
+import { sequelize } from "../config/database.js";
+import User from "./user.js";
 
-const Product = sequelize.define('Product', {
+const Product = sequelize.define(
+  "Product",
+  {
     id_produit: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
     marque: {
-        type:  DataTypes.STRING(50),
-        allowNull: false
+      type: DataTypes.STRING(50),
+      allowNull: false,
     },
     nom_modele: {
-        type: DataTypes.STRING(100),
-        allowNull: false
+      type: DataTypes.STRING(100),
+      allowNull: false,
     },
     description: {
-        type : DataTypes.TEXT,
-        allowNull: false
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
     type: {
-        type: DataTypes.STRING(50),
-        allowNull: false
+      type: DataTypes.STRING(50),
+      allowNull: false,
     },
     prix: {
-        type: DataTypes.DECIMAL(10,2)
+      type: DataTypes.DECIMAL(10, 2),
     },
     stock: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     id_fournisseur: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    }
-},  {
-    tableName: 'Produits',
-    schema: 'Produits',
-    timestamps: false
-})
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+  },
+  {
+    tableName: "Produits",
+    schema: "Produits",
+    timestamps: false,
+  }
+);
 
-Product.belongsTo(User, { foreignKey: 'id_fournisseur', as: 'fournisseur' });
+Product.belongsTo(User, { foreignKey: "id_fournisseur", as: "fournisseur" });
 
 export default Product;

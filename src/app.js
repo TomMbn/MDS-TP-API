@@ -8,6 +8,7 @@ import aboutRouter from './routes/aboutRoutes.js';
 import tchatRouter from './routes/tchatRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import productRoutes from './routes/productRoutes.js';
 import { fileURLToPath } from "node:url";
 import { Server } from "socket.io";
 
@@ -41,6 +42,7 @@ app.use(aboutRouter);
 app.use(tchatRouter);
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
+app.use('/products', productRoutes);
 
 
 function DAB(amount) {
