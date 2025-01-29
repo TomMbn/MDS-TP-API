@@ -5,43 +5,43 @@ const User = sequelize.define('User', {
   id_user: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true,
+    autoIncrement: true
   },
   nom: {
     type: DataTypes.STRING(100),
-    allowNull: false,
+    allowNull: false
   },
   prenom: {
     type: DataTypes.STRING(100),
-    allowNull: false,
+    allowNull: false
   },
   email: {
     type: DataTypes.STRING(100),
     allowNull: false,
-    unique: true, 
+    unique: true
   },
   adresse: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
   mot_de_passe: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
   telephone: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(100)
   },
   role: {
     type: DataTypes.STRING(100),
-    allowNull: false,
+    allowNull: false
   },
   id_commerciale: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER
   },
 }, {
   tableName: 'Utilisateurs',
   schema: 'Utilisateur',
-  timestamps: false,
+  timestamps: false
 });
 
 export default User;
