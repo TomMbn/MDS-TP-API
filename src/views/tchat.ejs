@@ -27,14 +27,13 @@
         border-radius: 10px;
         margin: 5px;
         max-width: 70%;
-        align-self: flex-start;
       }
-      .message.user {
+      .message.self {
         background: #007bff;
         color: white;
         align-self: flex-end;
       }
-      .message.others {
+      .message.other {
         background: #e1e1e1;
         align-self: flex-start;
       }
@@ -80,7 +79,7 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       const socket = io();
-      let username = "user_" + Math.floor(Math.random() * 1000); // Génération aléatoire d'un pseudo
+      const username = "user_" + Math.floor(Math.random() * 10000);
     </script>
   </head>
   <body>
@@ -107,11 +106,7 @@
         const item = document.createElement('li');
         item.textContent = text;
         item.classList.add('message');
-        if (sender === username) {
-          item.classList.add('user');
-        } else {
-          item.classList.add('others');
-        }
+        item.classList.add(sender === username ? 'self' : 'other');
         messages.appendChild(item);
         messages.scrollTop = messages.scrollHeight;
       });
