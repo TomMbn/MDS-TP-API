@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
+import 'dotenv/config';
 
-export const JWT_SECRET = 'votre_clé_secrète'; // Vous pouvez mettre cette clé dans un fichier .env
+export const JWT_SECRET = process.env.JWT_SECRET;
 
 export const generateToken = (user) => {
   return jwt.sign(
