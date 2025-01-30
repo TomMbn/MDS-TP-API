@@ -11,7 +11,7 @@ export const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER,
       enableArithAbort: true
     }
   },
-  port: process.env.DB_
+  port: process.env.DB_PORT
 });
 
 
