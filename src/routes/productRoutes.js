@@ -7,7 +7,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /products:
+ * /v1/products:
  *   post:
  *     summary: Créer un produit
  *     description: Crée un nouveau produit dans la base de données.
@@ -20,18 +20,28 @@ const router = express.Router();
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               marque:
  *                 type: string
- *                 description: Le nom du produit.
+ *                 description: La marque du produit.
+ *               nom_modele:
+ *                 type: string
+ *                 description: Le nom du modèle du produit.
  *               description:
  *                 type: string
  *                 description: La description du produit.
- *               price:
+ *               type:
+ *                 type: string
+ *                 description: Le type du produit (par exemple, électronique, vêtement, etc.).
+ *               prix:
  *                 type: number
+ *                 format: float
  *                 description: Le prix du produit.
  *               stock:
  *                 type: integer
  *                 description: Le stock disponible du produit.
+ *               id_fournisseur:
+ *                 type: integer
+ *                 description: L'ID du fournisseur du produit.
  *     responses:
  *       201:
  *         description: Produit créé avec succès.
@@ -44,7 +54,7 @@ router.post('/', authenticateJWT, checkRoles(['admin', 'commercial', 'fournisseu
 
 /**
  * @swagger
- * /products:
+ * /v1/products:
  *   get:
  *     summary: Récupérer tous les produits
  *     description: Récupère la liste de tous les produits.
@@ -60,7 +70,7 @@ router.get('/', authenticateJWT, checkRoles(['admin', 'commercial', 'fournisseur
 
 /**
  * @swagger
- * /products/{id}:
+ * /v1/products/{id}:
  *   get:
  *     summary: Récupérer un produit par ID
  *     description: Récupère un produit spécifique en utilisant son ID.
@@ -85,7 +95,7 @@ router.get('/:id', authenticateJWT, checkRoles(['admin', 'commercial', 'fourniss
 
 /**
  * @swagger
- * /products/{id}:
+ * /v1/products/{id}:
  *   put:
  *     summary: Mettre à jour un produit
  *     description: Met à jour un produit existant dans la base de données.
@@ -105,18 +115,28 @@ router.get('/:id', authenticateJWT, checkRoles(['admin', 'commercial', 'fourniss
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               marque:
  *                 type: string
- *                 description: Le nom du produit.
+ *                 description: La marque du produit.
+ *               nom_modele:
+ *                 type: string
+ *                 description: Le nom du modèle du produit.
  *               description:
  *                 type: string
  *                 description: La description du produit.
- *               price:
+ *               type:
+ *                 type: string
+ *                 description: Le type du produit.
+ *               prix:
  *                 type: number
+ *                 format: float
  *                 description: Le prix du produit.
  *               stock:
  *                 type: integer
  *                 description: Le stock disponible du produit.
+ *               id_fournisseur:
+ *                 type: integer
+ *                 description: L'ID du fournisseur du produit.
  *     responses:
  *       200:
  *         description: Produit mis à jour avec succès.
@@ -131,7 +151,7 @@ router.put('/:id', authenticateJWT, checkRoles(['admin', 'commercial', 'fourniss
 
 /**
  * @swagger
- * /products/{id}:
+ * /v1/products/{id}:
  *   delete:
  *     summary: Supprimer un produit
  *     description: Supprime un produit spécifique à partir de son ID.

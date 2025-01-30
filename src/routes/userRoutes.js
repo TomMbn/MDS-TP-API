@@ -7,7 +7,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /users:
+ * /v1/users:
  *   post:
  *     summary: Créer un utilisateur
  *     description: Crée un nouvel utilisateur dans la base de données.
@@ -48,7 +48,7 @@ router.post('/', createUser);
 
 /**
  * @swagger
- * /users/role/{role}:
+ * /v1/users/role/{role}:
  *   get:
  *     summary: Récupérer les utilisateurs par rôle
  *     description: Récupère tous les utilisateurs ayant un rôle spécifique.
@@ -75,7 +75,7 @@ router.get('/role/:role', authenticateJWT, checkRoles(['admin']), getUsersByRole
 
 /**
  * @swagger
- * /users/{id}:
+ * /v1/users/{id}:
  *   get:
  *     summary: Récupérer un utilisateur par ID
  *     description: Récupère un utilisateur spécifique à partir de son ID.
@@ -102,7 +102,7 @@ router.get('/:id', authenticateJWT, checkRoles(['admin']), getUserById);
 
 /**
  * @swagger
- * /users/{id}:
+ * /v1/users/{id}:
  *   put:
  *     summary: Mettre à jour un utilisateur
  *     description: Met à jour les informations d'un utilisateur existant.
@@ -154,7 +154,7 @@ router.put('/:id', authenticateJWT, updateUser);
 
 /**
  * @swagger
- * /users/{id}:
+ * /v1/users/{id}:
  *   delete:
  *     summary: Supprimer un utilisateur
  *     description: Supprime un utilisateur spécifique à partir de son ID.

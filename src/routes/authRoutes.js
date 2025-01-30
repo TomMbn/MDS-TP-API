@@ -5,7 +5,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /auth/login:
+ * /v1/auth/login:
  *   post:
  *     summary: Connecte un utilisateur
  *     description: Connecte un utilisateur avec son email et mot de passe, puis renvoie un token JWT.

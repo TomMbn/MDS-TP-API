@@ -44,10 +44,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.json());
 
-app.use('/tchat', tchatRoutes);
-app.use('/auth', authRoutes);
-app.use('/users', userRoutes);
-app.use('/products', productRoutes);
+app.use('/v1/tchat', tchatRoutes);
+app.use('/v1/auth', authRoutes);
+app.use('/v1/users', userRoutes);
+app.use('/v1/products', productRoutes);
 
 initSocket(io);
 
