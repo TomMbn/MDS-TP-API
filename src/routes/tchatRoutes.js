@@ -3,7 +3,7 @@ import { Router } from "express";
 const router = Router();
 
 router
-.get('/tchat', (req, res) => {
+.get('/', (req, res) => {
     res.render('tchat');
 })
 
