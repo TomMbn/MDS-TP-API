@@ -1,5 +1,7 @@
 import express from 'express';
-import productController from '../controllers/productController.js';
+import { createProduct, getAllProducts, getProductById, updateProduct, deleteProduct } from '../controllers/productController.js';
+import authenticateJWT from '../middlewares/authMiddleware.js'; 
+import checkRoles from '../middlewares/checkRolesMiddleware.js';
 
 const router = express.Router();
 
@@ -38,7 +40,7 @@ const router = express.Router();
  *       500:
  *         description: Erreur interne du serveur.
  */
-router.post('/', productController.createProduct);
+router.post('/', authenticateJWT, checkRoles(['admin', 'commercial', 'fournisseur']), createProduct);
 
 /**
  * @swagger
@@ -54,7 +56,7 @@ router.post('/', productController.createProduct);
  *       500:
  *         description: Erreur interne du serveur.
  */
-router.get('/', productController.getAllProducts);
+router.get('/', authenticateJWT, checkRoles(['admin', 'commercial', 'fournisseur']), getAllProducts);
 
 /**
  * @swagger
@@ -79,7 +81,7 @@ router.get('/', productController.getAllProducts);
  *       500:
  *         description: Erreur interne du serveur.
  */
-router.get('/:id', productController.getProductById);
+router.get('/:id', authenticateJWT, checkRoles(['admin', 'commercial', 'fournisseur']), getProductById);
 
 /**
  * @swagger
@@ -125,7 +127,7 @@ router.get('/:id', productController.getProductById);
  *       500:
  *         description: Erreur interne du serveur.
  */
-router.put('/:id', productController.updateProduct);
+router.put('/:id', authenticateJWT, checkRoles(['admin', 'commercial', 'fournisseur']), updateProduct);
 
 /**
  * @swagger
@@ -150,6 +152,6 @@ router.put('/:id', productController.updateProduct);
  *       500:
  *         description: Erreur interne du serveur.
  */
-router.delete('/:id', productController.deleteProduct);
+router.delete('/:id', authenticateJWT, checkRoles(['admin', 'commercial', 'fournisseur']), deleteProduct);
 
 export default router;

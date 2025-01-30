@@ -1,6 +1,7 @@
 import express from 'express';
 import { createUser, getUsersByRole, getUserById, updateUser, deleteUser } from '../controllers/userController.js';
 import authenticateJWT from '../middlewares/authMiddleware.js'; 
+import checkRoles from '../middlewares/checkRolesMiddleware.js';
 
 const router = express.Router();
 
@@ -70,7 +71,7 @@ router.post('/', createUser);
  *       500:
  *         description: Erreur interne du serveur.
  */
-router.get('/role/:role', authenticateJWT, getUsersByRole);
+router.get('/role/:role', authenticateJWT, checkRoles(['admin']), getUsersByRole);
 
 /**
  * @swagger
@@ -97,7 +98,7 @@ router.get('/role/:role', authenticateJWT, getUsersByRole);
  *       500:
  *         description: Erreur interne du serveur.
  */
-router.get('/:id', authenticateJWT, getUserById);
+router.get('/:id', authenticateJWT, checkRoles(['admin']), getUserById);
 
 /**
  * @swagger
@@ -176,6 +177,6 @@ router.put('/:id', authenticateJWT, updateUser);
  *       500:
  *         description: Erreur interne du serveur.
  */
-router.delete('/:id', authenticateJWT, deleteUser);
+router.delete('/:id', authenticateJWT, checkRoles(['admin']), deleteUser);
 
 export default router;
