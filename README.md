@@ -1,6 +1,6 @@
 API REST - Boutique info
 
-Ce projet consiste en la mise en place d'une API RESTful qui permet la gestion des produits, des utilisateurs, et leur authentification avec un système basé sur JSON Web Token (JWT). L'API est construite avec Express.js, Sequelize pour l'ORM et une base de données SQL Server. Elle est également documentée avec Swagger et inclut des tests unitaires et de charge pour garantir la qualité et les performances.
+Ce projet consiste en la mise en place d'une API RESTful qui permet la gestion des produits, des utilisateurs, et leur authentification avec un système basé sur JSON Web Token (JWT). L'API est construite avec Express.js, Sequelize pour l'ORM et une base de données SQL Server. Elle est également documentée avec Swagger.
 
 Fonctionnalités
 1. Swagger / Documentation (3pts)
