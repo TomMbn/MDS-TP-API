@@ -49,6 +49,10 @@ app.use('/v1/auth', authRoutes);
 app.use('/v1/users', userRoutes);
 app.use('/v1/products', productRoutes);
 
+app.use((req, res, next) => {
+  res.status(404).render('404');
+})
+
 initSocket(io);
 
 server.listen(port, () => {
