@@ -39,7 +39,7 @@ L'API supporte JSON par défaut pour les échanges de données via les requêtes
 L'API utilise JSON Web Tokens (JWT) pour sécuriser les routes sensibles et vérifier l'authentification des utilisateurs. Lors de la connexion, l'utilisateur reçoit un token JWT qu'il doit inclure dans les en-têtes de ses futures requêtes.
 Les rôles d'utilisateur sont inclus dans le JWT et permettent de contrôler l'accès aux différentes routes (par exemple, certaines routes sont réservées aux admins uniquement).
 
-7. Mise en Production avec P2M et SQLServer (4pts)
+7. Mise en Production avec PM2 et SQLServer (4pts)
 
 Le projet est configuré pour être déployé sur un serveur de production. Nous utilisons PM2 pour faciliter la gestion du déploiement et de la mise en production.
 
