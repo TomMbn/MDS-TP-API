@@ -60,6 +60,6 @@ Le code est également écrit en suivant les meilleures pratiques, avec une sép
 
 11. Page de Tchat avec Socket.io (10pts)
 
-Une fonctionnalité de tchat en temps réel est intégrée via Socket.io. La page de tchat permet à deux ou plusieurs utilisateurs d'échanger des messages en temps réel. Cette fonctionnalité est liée à la gestion des utilisateurs (les utilisateurs doivent être authentifiés et autorisés à accéder au tchat).
+Une fonctionnalité de tchat en temps réel est intégrée via Socket.io. La page de tchat permet à deux ou plusieurs utilisateurs d'échanger des messages en temps réel.
 Socket.io est utilisé pour la gestion des connexions en temps réel.
 Le tchat contient également un DAB
