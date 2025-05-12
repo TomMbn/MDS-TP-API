@@ -66,7 +66,7 @@ router.post('/', authenticateJWT, checkRoles(['admin', 'commercial', 'fournisseu
  *       500:
  *         description: Erreur interne du serveur.
  */
-router.get('/', authenticateJWT, checkRoles(['admin', 'commercial', 'fournisseur']), getAllProducts);
+router.get('/', authenticateJWT, getAllProducts);
 
 /**
  * @swagger
@@ -91,7 +91,7 @@ router.get('/', authenticateJWT, checkRoles(['admin', 'commercial', 'fournisseur
  *       500:
  *         description: Erreur interne du serveur.
  */
-router.get('/:id', authenticateJWT, checkRoles(['admin', 'commercial', 'fournisseur']), getProductById);
+router.get('/:id', authenticateJWT, getProductById);
 
 /**
  * @swagger
